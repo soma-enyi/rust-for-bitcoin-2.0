@@ -32,15 +32,17 @@ submission.
 
 ### 1. What is a Bitcoin transaction input?
 
-A Bitcoin transaction input is a reference to a previous unspent transaction output (UTXO) that is being spent. It identifies which UTXO is being consumed by including the previous transaction ID and the output index (vout). Each input can only be spent once, and the transaction creator proves they have the authority to spend it through a signature.
+A Bitcoin transaction input is an output that is being spent in a transaction. It is a reference to a previous unspent transaction output (UTXO) that is being spent. It identifies which UTXO is being consumed by including the previous transaction ID and the output index (vout). Each input can only be spent once, and the transaction creator proves they have the authority to spend it through a signature.
 
 ### 2. What is a Bitcoin transaction output?
 
-A Bitcoin transaction output is a new UTXO being created by a transaction. It specifies an amount of satoshis and a recipient address (encoded in a specific script format). Outputs are unspent until they become inputs in a future transaction.
+A Bitcoin transaction output is a package of bitcoins created in a bitcoin transaction. When one create multiple outputs in a transaction, where each output contains an amount of bitcoin and a lock on it. A future transaction can then spend these outputs (as inputs) by unlocking them, and create new outputs with new locks on them.  OR
+A Bitcoin transaction output is a record that specifies an amount of bitcoin and the conditions required to spend it in the future. Once created, it becomes a UTXO until it is spent.
 
 ### 3. What is a UTXO?
 
 A UTXO (Unspent Transaction Output) is a transaction output that has not yet been spent. UTXOs are the fundamental unit of value in Bitcoin: they represent coins that can be spent in future transactions. The total spendable balance of a Bitcoin address is the sum of all UTXOs that can be unlocked with its private key.
+
 
 ### 4. What does an outpoint identify?
 
@@ -48,7 +50,10 @@ An outpoint uniquely identifies a specific output from a specific transaction. I
 
 ### 5. How is a transaction fee calculated?
 
-The transaction fee is calculated as: `fee = total_input_value - total_output_value`. It represents the amount of satoshi that are "burned" (not included in any output). Miners include transactions with higher fees first, so users can pay higher fees to prioritize their transaction confirmation.
+A UTXO (Unspent Transaction Output) is a transaction output that has not yet been spent. It represents bitcoin that is available to be used as an input in a future transaction.
+`Transaction Fee = Total Inputs − Total Outputs`
+Any remaining amount is treated as the miner's fee.
+It represents the amount of satoshi that are "burned" (not included in any output). Miners include transactions with higher fees first, so users can pay higher fees to prioritize their transaction confirmation.
 
 ### 6. Why use integers rather than floating-point numbers for bitcoin amounts?
 

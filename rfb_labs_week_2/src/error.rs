@@ -21,6 +21,9 @@ pub enum TransactionError {
 
 impl fmt::Display for TransactionError {
     fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+         // TODO(Part 4): return a useful message for every error variant.
+        //   todo!("implement Display for TransactionError")
+        
         match self {
             Self::NoInputs => write!(formatter, "Transaction must have at least one input"),
             Self::NoOutputs => write!(formatter, "Transaction must have at least one output"),
